@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>আমার খবর — সঠিক খবর, সবার আগে</title>
+  <meta name="description" content="আমার খবর — বাংলা সংবাদ, বিশ্লেষণ ও মানুষের গল্প।">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="আমার খবর">
+  <meta property="og:description" content="সঠিক খবর, সবার আগে">
+  <meta property="og:locale" content="bn_BD">
+  <link rel="canonical" href="https://YOUR-DOMAIN.example/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json" id="siteSchema">{"@context":"https://schema.org","@type":"NewsMediaOrganization","name":"আমার খবর","inLanguage":"bn-BD","url":"https://YOUR-DOMAIN.example/"}</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="./"><span class="mark">খ</span><span><b>আমার খবর</b><small>সঠিক খবর, সবার আগে</small></span></a>
+  <button class="hamb" id="menuBtn" aria-label="মেনু">☰</button>
+  <nav id="nav"><a href="./">হোম</a><a href="#latest">সর্বশেষ</a><a href="#category-national">জাতীয়</a><a href="#category-tech">প্রযুক্তি</a><a href="#category-education">শিক্ষা</a><a href="#newsletter">নিউজলেটার</a></nav>
+  <form id="searchForm" class="search"><input id="searchInput" type="search" placeholder="খবর খুঁজুন..." aria-label="খবর খুঁজুন"><button>খুঁজুন</button></form>
+</header>
+<main class="wrap">
+  <section class="intro"><div><span class="eyebrow">বাংলা সংবাদ ও ব্লগ</span><h1>সত্য জানুন, সচেতন থাকুন।</h1><p>বাংলাদেশ ও বিশ্বের খবর, প্রযুক্তি, শিক্ষা এবং মানুষের গল্প—এক জায়গায়।</p></div><div class="today" id="todayDate"></div></section>
+  <section id="featured" class="featured"><div class="loading">খবর লোড হচ্ছে… Firebase সেটআপ না করলে নমুনা খবর দেখা যাবে।</div></section>
+  <section class="layout">
+    <div class="maincol">
+      <div class="section-title" id="latest"><h2>সর্বশেষ খবর</h2><span id="resultCount"></span></div>
+      <div id="categoryFilters" class="filters">
+        <button class="filter active" data-filter="সব">সব খবর</button><button class="filter" data-filter="জাতীয়" id="category-national">জাতীয়</button><button class="filter" data-filter="প্রযুক্তি" id="category-tech">প্রযুক্তি</button><button class="filter" data-filter="শিক্ষা" id="category-education">শিক্ষা</button><button class="filter" data-filter="আন্তর্জাতিক">আন্তর্জাতিক</button><button class="filter" data-filter="খেলাধুলা">খেলাধুলা</button>
+      </div>
+      <div id="articleList" class="article-grid"></div>
+      <p id="noResults" class="notice" hidden>কোনো খবর পাওয়া যায়নি। অন্য শব্দ দিয়ে খুঁজুন।</p>
+    </div>
+    <aside class="sidebar">
+      <section class="box" id="newsletter"><h2>ইমেইল আপডেট</h2><p>নতুন খবরের আপডেট পেতে ইমেইল দিন।</p><form id="newsletterForm"><input type="email" id="newsletterEmail" placeholder="আপনার ইমেইল" required><button>সাবস্ক্রাইব</button></form><small id="newsletterStatus">ইমেইল শুধুমাত্র কনফিগার করা Firebase-এ সংরক্ষণ হবে।</small></section>
+      <section class="box"><h2>আমাদের সম্পর্কে</h2><p>আমার খবর একটি বাংলা নিউজ ও ব্লগ সাইট। প্রকাশের আগে প্রতিটি খবরের তথ্য যাচাই করুন।</p></section>
+      <section class="box"><h2>প্রকাশনা নীতি</h2><p>ভুল তথ্য, অনুমতিহীন ছবি বা অন্যের লেখা নিজের নামে প্রকাশ করবেন না।</p></section>
+    </aside>
+  </section>
+</main>
+<footer><div class="foot-inner"><a class="brand footbrand" href="./"><span class="mark">খ</span><span><b>আমার খবর</b><small>সঠিক খবর, সবার আগে</small></span></a><div><a href="privacy.html">গোপনীয়তা নীতি</a> · <a href="admin.html">অ্যাডমিন লগইন</a></div></div><p>© <span id="year"></span> আমার খবর। প্রকাশের আগে তথ্য যাচাই করুন।</p></footer>
+<dialog id="articleDialog"><button class="close" id="closeDialog" aria-label="বন্ধ করুন">×</button><div id="articleDetail"></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="app.js"></script>
+</body></html>

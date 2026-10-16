@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    // Production site: restrict admin operations to the UID of your trusted admin account.
+    function isAdmin() { return signedIn() && request.auth.uid == 'REPLACE_WITH_ADMIN_UID'; }
+
+    match /articles/{articleId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow create, update, delete: if isAdmin();
+      match /comments/{commentId} {
+        allow read: if resource.data.approved == true || isAdmin();
+        allow create: if request.resource.data.keys().hasOnly(['name','text','createdAt','approved'])
+          && request.resource.data.name is string
+          && request.resource.data.name.size() > 0
+          && request.resource.data.name.size() <= 60
+          && request.resource.data.text is string
+          && request.resource.data.text.size() > 0
+          && request.resource.data.text.size() <= 1200
+          && request.resource.data.approved == false;
+        allow update, delete: if isAdmin();
+      }
+    }
+    match /newsletterSubscribers/{subscriberId} {
+      allow create: if request.resource.data.keys().hasOnly(['email','createdAt','source'])
+        && request.resource.data.email is string
+        && request.resource.data.email.size() <= 254;
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}

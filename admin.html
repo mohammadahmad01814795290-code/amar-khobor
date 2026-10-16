@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>অ্যাডমিন প্যানেল | আমার খবর</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="topbar"><a class="brand" href="./"><span class="mark">খ</span><span><b>আমার খবর</b><small>অ্যাডমিন প্যানেল</small></span></a><a class="primary" href="./">সাইট দেখুন</a></header>
+<main class="admin-wrap">
+<section class="admin-card"><h1>অ্যাডমিন লগইন</h1><p class="status">শুধু Firebase Authentication-এ অনুমোদিত অ্যাকাউন্ট ব্যবহার করুন। প্রথমে README-এর সেটআপ শেষ করতে হবে।</p>
+<form id="loginForm" class="form-grid"><label class="field">ইমেইল<input type="email" id="loginEmail" required autocomplete="username"></label><label class="field">পাসওয়ার্ড<input type="password" id="loginPassword" required autocomplete="current-password"></label><div class="field full"><button class="primary">লগইন</button></div></form><div id="authStatus" class="status" aria-live="polite"></div><button id="logoutBtn" class="secondary hidden">লগআউট</button></section>
+<section id="editorSection" class="admin-card hidden"><h2 id="editorTitle">নতুন খবর লিখুন</h2><form id="articleForm" class="form-grid">
+<input type="hidden" id="articleId">
+<label class="field full">খবরের শিরোনাম<input id="title" maxlength="180" required></label>
+<label class="field">বিভাগ<select id="category"><option>জাতীয়</option><option>প্রযুক্তি</option><option>শিক্ষা</option><option>আন্তর্জাতিক</option><option>খেলাধুলা</option><option>জীবনযাপন</option></select></label>
+<label class="field">প্রচ্ছদ ছবি আপলোড<input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp"></label>
+<label class="field full">অথবা ছবির URL<input id="imageUrl" type="url" placeholder="https://..."></label>
+<label class="field full">সংক্ষিপ্ত বিবরণ<textarea id="summary" maxlength="500" required style="min-height:80px"></textarea></label>
+<label class="field full">সম্পূর্ণ খবর<textarea id="body" required></textarea></label>
+<div class="field full"><div class="admin-actions"><button class="primary" id="publishBtn">প্রকাশ করুন</button><button type="button" class="secondary" id="resetBtn">নতুন খবর</button></div><p id="uploadStatus" class="status"></p></div>
+</form></section>
+<section id="manageSection" class="admin-card hidden"><h2>প্রকাশিত খবর পরিচালনা</h2><div id="adminArticles" class="admin-list"></div></section>
+<section id="commentsSection" class="admin-card hidden"><h2>মন্তব্য অনুমোদন</h2><p class="status">নতুন মন্তব্য প্রথমে অনুমোদনহীন থাকে।</p><div id="adminComments" class="admin-list"></div></section>
+<section id="subscribersSection" class="admin-card hidden"><h2>নিউজলেটার ইমেইল</h2><p class="status">ইমেইলগুলো এখানে দেখা যাবে। নিয়ম মেনে ব্যবহার করুন; স্বয়ংক্রিয় ইমেইল পাঠাতে আলাদা সেবা লাগবে।</p><div id="adminSubscribers" class="admin-list"></div></section>
+</main><div id="toast" role="status" aria-live="polite"></div><script type="module" src="admin.js"></script></body></html>

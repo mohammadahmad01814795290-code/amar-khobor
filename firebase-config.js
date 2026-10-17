@@ -1,12 +1,12 @@
-// Firebase Console থেকে নিজের config কপি করে নিচের placeholder বদলান।
+// Firebase Console থেকে পাওয়া কনফিগারেশন
 export const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "PASTE_YOUR_SENDER_ID",
-  appId: "PASTE_YOUR_APP_ID"
+  apiKey: "AIzaSyBzHIL2yGZB-qmInw19KosB-eKbpAaTCbY",
+  authDomain: "amar-khobor-3d586.firebaseapp.com",
+  projectId: "amar-khobor-3d586",
+  storageBucket: "amar-khobor-3d586.firebasestorage.app",
+  messagingSenderId: "225812996136",
+  appId: "1:225812996136:web:ba0daf2604d9969b55151d",
+  measurementId: "G-0M04RGN2Z4"
 };
-export const firebaseReady = !Object.values(firebaseConfig).some(v =>
-  String(v).includes("PASTE_") || String(v).includes("YOUR_PROJECT_ID")
-);
+
+export const firebaseReady = true;

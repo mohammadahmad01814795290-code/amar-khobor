@@ -31,7 +31,13 @@ function render(){
 async function loadArticles(){
  if(!firebaseReady){render();return}
  try{
-  const snap=await getDocs(query(collection(db,'articles'),orderBy('createdAt','desc')));
+  
+const snap = await getDocs(query(
+  collection(db, 'articles'),
+  where('published', '==', true),
+  orderBy('createdAt', 'desc')
+));
+
   const live=snap.docs.map(d=>({id:d.id,...d.data()}));
   articles=live.length?live:fallback;render();
  }catch(err){console.error(err);articles=[...fallback];render();toast('Firebase ডেটা পড়া যায়নি। সেটআপ ও Firestore Rules পরীক্ষা করুন।')}

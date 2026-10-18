@@ -3,8 +3,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
     // Production site: restrict admin operations to the UID of your trusted admin account.
-    function isAdmin() { return signedIn() && request.auth.uid == 'REPLACE_WITH_ADMIN_UID'; }
-
+    function isAdmin() { return signedIn() && request.auth.uid == 'TCAxCm4HAlhPf9wQNizYg4nQJUZ2'; }
     match /articles/{articleId} {
       allow read: if resource.data.published == true || isAdmin();
       allow create, update, delete: if isAdmin();
